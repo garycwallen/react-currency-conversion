@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import CurrencyRow from './CurrencyRow';
 
+// TODO: Figure out way to get all symbols, but omit EURO from base
 const BASE_URL = 'http://api.exchangeratesapi.io/v1/latest?access_key=e0e8ce149b99a004a7df3023fac015b3&symbols=USD,CAD,JPY'
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
       })
   }, [])
 
+  // TODO: Identify issue for backwards conversions not occuring only when FROM
   useEffect(() => {
     if (fromCurrency != null && toCurrency != null ) {
       fetch(`${BASE_URL}?base=${fromCurrency}&symbols=${toCurrency}`)
